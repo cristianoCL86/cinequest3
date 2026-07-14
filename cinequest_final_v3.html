@@ -25,7 +25,7 @@
   --text:     #F0EBF8;
   --muted:    rgba(240,235,248,0.45);
   --fh: 'Bebas Neue', sans-serif;
-  --fb: 'Righteous', cursive;
+  --fh: 'Righteous', cursive;
   --fb: 'DM Sans', sans-serif;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -60,7 +60,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
 .logo-sub  { font-family: var(--fb); font-size: 9px; letter-spacing: 5px; color: var(--muted); margin-top: 2px; text-transform: uppercase; }
 .hdr-badges { display: flex; gap: 8px; align-items: center; }
 .badge {
-  font-family: var(--fb); font-size: 11px; letter-spacing: 2px;
+  font-family: var(--fh); font-size: 11px; letter-spacing: 2px;
   padding: 4px 12px; border: 1px solid; border-radius: 3px;
 }
 .badge-pink { color: var(--neo-pink); border-color: var(--neo-pink); background: var(--dim-pink); box-shadow: 0 0 8px rgba(255,30,142,0.2); }
@@ -103,7 +103,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
   box-shadow: 0 0 8px var(--neo-pink); margin: 10px 0;
 }
 .poster-title { font-family: var(--fh); font-size: 38px; letter-spacing: 5px; line-height: 1.1; }
-.poster-sub   { font-family: var(--fb); font-size: 10px; letter-spacing: 5px; color: var(--muted); margin-top: 4px; }
+.poster-sub   { font-family: var(--fh); font-size: 10px; letter-spacing: 5px; color: var(--muted); margin-top: 4px; }
 
 .fam-row {
     opacity: 0.5; /* AtenÃºa el DIV */
@@ -120,7 +120,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
 }
 .fam-chk:checked { background: var(--neo-cyan); }
 .fam-chk:checked::after { content: 'âœ“'; position: absolute; top: -2px; left: 2px; font-size: 14px; color: var(--bg); font-weight: 900; }
-.fam-lbl { font-family: var(--fb); font-size: 12px; letter-spacing: 1px; color: var(--neo-cyan); cursor: pointer; }
+.fam-lbl { font-family: var(--fh); font-size: 12px; letter-spacing: 1px; color: var(--neo-cyan); cursor: pointer; }
 .fam-sub { font-size: 10px; color: var(--muted); margin-left: auto; letter-spacing: 1px; }
 
 .sec-ttl {
@@ -140,7 +140,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
 .mc:hover::after, .mc.sel::after { background: rgba(255,30,142,0.05); }
 .mc.sel { border-color: var(--neo-pink); box-shadow: 0 0 12px rgba(255,30,142,0.2); }
 .mc-ico  { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-.mc-name { font-family: var(--fb); font-size: 10px; letter-spacing: 1px; color: var(--neo-pink); margin-bottom: 3px; }
+.mc-name { font-family: var(--fh); font-size: 10px; letter-spacing: 1px; color: var(--neo-pink); margin-bottom: 3px; }
 .mc-desc { font-size: 11px; color: var(--muted); line-height: 1.4; }
 
 .diff-row { display: flex; gap: 8px; width: 100%; max-width: 540px; }
@@ -148,7 +148,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
 .db {
   flex: 1; padding: 9px 4px; border: 1px solid rgba(0,245,255,0.35);
   background: var(--surface); color: rgba(0,245,255,0.7);
-  font-family: var(--fb); font-size: 10px; letter-spacing: 2px;
+  font-family: var(--fh); font-size: 10px; letter-spacing: 2px;
   cursor: pointer; text-align: center; transition: all .2s;
 }
 .db:hover { border-color: var(--neo-cyan); color: var(--neo-cyan); box-shadow: 0 0 10px rgba(0,245,255,0.15); }
@@ -183,11 +183,11 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
   content: ''; position: absolute; top: 4px; left: 4px; right: 4px; bottom: 4px;
   border: 1px solid rgba(0,245,255,0.08); pointer-events: none;
 }
-.qlabel { font-family: var(--fb); font-size: 9px; letter-spacing: 3px; color: var(--neo-cyan); text-transform: uppercase; text-shadow: 0 0 6px var(--neo-cyan); }
+.qlabel { font-family: var(--fh); font-size: 9px; letter-spacing: 3px; color: var(--neo-cyan); text-transform: uppercase; text-shadow: 0 0 6px var(--neo-cyan); }
 .qemoji { font-size: 38px; line-height: 1.3; letter-spacing: 4px; filter: drop-shadow(0 0 8px rgba(255,225,53,0.5)); }
 .qscramble { font-family: var(--fh); font-size: 26px; color: var(--neo-yel); letter-spacing: 6px; word-spacing: 14px; text-shadow: 0 0 12px var(--neo-yel); }
 .qscene { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; color: rgba(240,235,248,0.85); line-height: 1.8; max-width: 500px; font-style: italic; }
-.qgenre { font-family: var(--fb); font-size: 9px; letter-spacing: 2px; color: var(--muted); }
+.qgenre { font-family: var(--fh); font-size: 9px; letter-spacing: 2px; color: var(--muted); }
 
 /* â”€â”€ ACTORS MODE (DESTACADO) â”€â”€ */
 .actors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; width: 100%; }
@@ -223,7 +223,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
   animation: pulse-loading 1.2s ease-in-out infinite;
 }
 @keyframes pulse-loading { 0%,100% { opacity:.3 } 50% { opacity:.9 } }
-.actor-name { font-family: var(--fb); font-size: 12px; color: var(--text); letter-spacing: .5px; text-align: center; line-height: 1.3; }
+.actor-name { font-family: var(--fh); font-size: 12px; color: var(--text); letter-spacing: .5px; text-align: center; line-height: 1.3; }
 .actor-order { font-size: 9px; color: var(--neo-cyan); letter-spacing: 2px; text-shadow: 0 0 6px var(--neo-cyan); }
 
 /* â”€â”€ EYE CARDS â”€â”€ */
@@ -248,7 +248,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
 .hbtn {
   padding: 7px 14px; border: 1px solid rgba(255,225,53,0.4);
   background: rgba(255,225,53,0.07); color: var(--neo-yel);
-  font-family: var(--fb); font-size: 9px; letter-spacing: 2px;
+  font-family: var(--fh); font-size: 9px; letter-spacing: 2px;
   cursor: pointer; transition: all .2s;
   text-shadow: 0 0 6px rgba(255,225,53,0.5);
 }
@@ -270,7 +270,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
 .ans-in::placeholder { color: var(--muted); }
 .sub-btn {
   padding: 11px 20px; border: 2px solid var(--neo-cyan); background: var(--dim-cyan);
-  color: var(--neo-cyan); font-family: var(--fb); font-size: 13px; letter-spacing: 2px;
+  color: var(--neo-cyan); font-family: var(--fh); font-size: 13px; letter-spacing: 2px;
   cursor: pointer; transition: all .2s;
   text-shadow: 0 0 8px var(--neo-cyan);
 }
@@ -282,7 +282,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
 
 .nxt {
   padding: 11px; border: 1px solid rgba(0,245,255,0.3); background: rgba(0,245,255,0.04);
-  color: var(--neo-cyan); font-family: var(--fb); font-size: 11px; letter-spacing: 3px;
+  color: var(--neo-cyan); font-family: var(--fh); font-size: 11px; letter-spacing: 3px;
   cursor: pointer; text-align: center; display: none; transition: all .2s;
   text-shadow: 0 0 6px var(--neo-cyan);
 }
@@ -303,7 +303,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
 .choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; margin-top: 4px; }
 .choice-btn {
   padding: 11px 20px; border: 2px solid var(--neo-cyan); background: var(--dim-cyan);
-  color: var(--neo-cyan); font-family: var(--fb); font-size: 13px; letter-spacing: 2px;
+  color: var(--neo-cyan); font-family: var(--fh); font-size: 13px; letter-spacing: 2px;
   cursor: pointer; transition: all .2s;
   text-shadow: 0 0 8px var(--neo-cyan);
 }
@@ -327,13 +327,13 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
 .res-frame::before { top: -10px; background: var(--surface); padding: 0 10px; }
 .res-frame::after  { bottom: -10px; background: var(--surface); padding: 0 10px; }
 .res-score { font-family: var(--fh); font-size: 64px; line-height: 1; }
-.res-lbl   { font-family: var(--fb); font-size: 9px; letter-spacing: 5px; color: var(--muted); }
+.res-lbl   { font-family: var(--fh); font-size: 9px; letter-spacing: 5px; color: var(--muted); }
 .res-stars { font-size: 22px; letter-spacing: 8px; }
 .res-msg   { font-family: var(--fb); font-size: 16px; font-weight: 300; color: rgba(240,235,248,0.8); }
 .res-btns  { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
 .rbtn {
   padding: 10px 24px; border: 1px solid rgba(0,245,255,0.3); background: var(--surface);
-  color: var(--neo-cyan); font-family: var(--fb); font-size: 10px; letter-spacing: 3px;
+  color: var(--neo-cyan); font-family: var(--fh); font-size: 10px; letter-spacing: 3px;
   cursor: pointer; transition: all .2s;
 }
 .rbtn:hover { border-color: var(--neo-cyan); box-shadow: 0 0 12px rgba(0,245,255,0.2); }
@@ -352,7 +352,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
 .ld:nth-child(2) { background: var(--neo-cyan); box-shadow: 0 0 8px var(--neo-cyan); animation-delay: .2s; }
 .ld:nth-child(3) { background: var(--neo-yel);  box-shadow: 0 0 8px var(--neo-yel);  animation-delay: .4s; }
 @keyframes ldot { 0%,100%{opacity:.2;transform:scale(.7)} 50%{opacity:1;transform:scale(1.1)} }
-.load-txt { font-family: var(--fb); font-size: 9px; letter-spacing: 3px; color: var(--muted); }
+.load-txt { font-family: var(--fh); font-size: 9px; letter-spacing: 3px; color: var(--muted); }
 
 /* â”€â”€ NEON BORDER BLINK â”€â”€ */
 @keyframes border-blink { 0%,100%{opacity:1} 50%{opacity:.4} }
@@ -363,7 +363,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
   pointer-events: none; /* Deshabilita cualquier clic o interacciÃ³n */
   flex: 1; padding: 9px 4px; border: 1px solid rgba(0,245,255,0.35);
   background: var(--surface); color: rgba(0,245,255,0.7);
-  font-family: var(--fb); font-size: 10px; letter-spacing: 2px;
+  font-family: var(--fh); font-size: 10px; letter-spacing: 2px;
   cursor: pointer; text-align: center; transition: all .2s;
 }
 
@@ -383,7 +383,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
 }
 
 .funcionalidad-apagada-ico  { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-.funcionalidad-apagada-name { font-family: var(--fb); font-size: 10px; letter-spacing: 1px; color: var(--neo-pink); margin-bottom: 3px; }
+.funcionalidad-apagada-name { font-family: var(--fh); font-size: 10px; letter-spacing: 1px; color: var(--neo-pink); margin-bottom: 3px; }
 .funcionalidad-apagada-desc { font-size: 11px; color: var(--muted); line-height: 1.4; }
 
 /* Efecto opcional: Mostrar un mensaje al pasar el cursor (necesita un contenedor) */
@@ -489,7 +489,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
   <div id="s-game" class="screen">
     <div class="game-inner">
       <div style="display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-family:var(--fb);font-size:10px;letter-spacing:2px;color:var(--muted);" id="q-num">Pregunta 1 de 7</span>
+        <span style="font-family:var(--fh);font-size:10px;letter-spacing:2px;color:var(--muted);" id="q-num">Pregunta 1 de 7</span>
         <span style="font-family:var(--fh);font-size:13px;color:var(--neo-yel);text-shadow:0 0 6px var(--neo-yel);letter-spacing:2px;" id="q-pts">+100 PTS</span>
       </div>
       <div class="prog-wrap"><div class="prog" id="prog" style="width:0%"></div></div>
@@ -847,9 +847,9 @@ async function renderQ() {
       </div>`).join('');
     const movieInfo = selDiff==='facil'
       ? `<div style="margin-top:8px;border-top:1px solid rgba(0,245,255,0.15);padding-top:8px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-          <span style="font-family:var(--fb);font-size:9px;color:var(--neo-cyan);letter-spacing:1px;">ðŸŽ¬ ${m.g}</span>
-          <span style="font-family:var(--fb);font-size:9px;color:var(--neo-yel);letter-spacing:1px;">ðŸ“… ${m.y}</span>
-          <span style="font-family:var(--fb);font-size:9px;color:var(--neo-pink);letter-spacing:1px;">â­ Protagonista: ${m.c[m.c.length-1]}</span>
+          <span style="font-family:var(--fh);font-size:9px;color:var(--neo-cyan);letter-spacing:1px;">ðŸŽ¬ ${m.g}</span>
+          <span style="font-family:var(--fh);font-size:9px;color:var(--neo-yel);letter-spacing:1px;">ðŸ“… ${m.y}</span>
+          <span style="font-family:var(--fh);font-size:9px;color:var(--neo-pink);letter-spacing:1px;">â­ Protagonista: ${m.c[m.c.length-1]}</span>
         </div>` : '';
     card.innerHTML = `
       <div class="qlabel">Â¿De quÃ© pelÃ­cula son estos actores?</div>
@@ -873,7 +873,7 @@ async function renderQ() {
           <div class="actor-photo-loading"><div class="ld-dots" style="gap:4px;"><div class="ld" style="width:6px;height:6px;"></div><div class="ld" style="width:6px;height:6px;animation-delay:.2s"></div><div class="ld" style="width:6px;height:6px;animation-delay:.4s"></div></div></div>
         </div>
         <div style="font-family:var(--fb);font-size:9px;color:var(--muted);text-align:center;line-height:1.3;max-width:110px;">${fi.t}</div>
-        <div style="font-family:var(--fb);font-size:8px;color:var(--neo-cyan);text-align:center;letter-spacing:1px;text-shadow:0 0 6px var(--neo-cyan);">${fi.ch}</div>
+        <div style="font-family:var(--fh);font-size:8px;color:var(--neo-cyan);text-align:center;letter-spacing:1px;text-shadow:0 0 6px var(--neo-cyan);">${fi.ch}</div>
       </div>`).join('');
     card.innerHTML = `
       <div class="qlabel">Â¿QuiÃ©n es este actor? ReconÃ³celo por sus pelÃ­culas</div>
