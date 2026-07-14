@@ -626,6 +626,102 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
 </div>
 
 <script>
+	
+// ═══════════════════════════════════════════════════════════════
+// ██████████  DEATH MATCH — modo desempate sin puntos  ██████████
+// ═══════════════════════════════════════════════════════════════
+const DM_ACTORS = [
+  {n:'Leonardo DiCaprio', g:'actor'},
+  {n:'Tom Cruise', g:'actor'},
+  {n:'Brad Pitt', g:'actor'},
+  {n:'Robert Downey Jr.', g:'actor'},
+  {n:'Dwayne Johnson', g:'actor'},
+  {n:'Johnny Depp', g:'actor'},
+  {n:'Will Smith', g:'actor'},
+  {n:'Keanu Reeves', g:'actor'},
+  {n:'Christian Bale', g:'actor'},
+  {n:'Ryan Reynolds', g:'actor'},
+  {n:'Hugh Jackman', g:'actor'},
+  {n:'Chris Hemsworth', g:'actor'},
+  {n:'Tom Hanks', g:'actor'},
+  {n:'Matt Damon', g:'actor'},
+  {n:'Joaquin Phoenix', g:'actor'},
+  {n:'Benedict Cumberbatch', g:'actor'},
+  {n:'Ryan Gosling', g:'actor'},
+  {n:'Chris Evans', g:'actor'},
+  {n:'Samuel L. Jackson', g:'actor'},
+  {n:'Timothée Chalamet', g:'actor'},
+  {n:'Scarlett Johansson', g:'actriz'},
+  {n:'Jennifer Lawrence', g:'actriz'},
+  {n:'Emma Stone', g:'actriz'},
+  {n:'Anne Hathaway', g:'actriz'},
+  {n:'Angelina Jolie', g:'actriz'},
+  {n:'Margot Robbie', g:'actriz'},
+  {n:'Natalie Portman', g:'actriz'},
+  {n:'Charlize Theron', g:'actriz'},
+  {n:'Sandra Bullock', g:'actriz'},
+  {n:'Julia Roberts', g:'actriz'},
+  {n:'Nicole Kidman', g:'actriz'},
+  {n:'Cate Blanchett', g:'actriz'},
+  {n:'Emma Watson', g:'actriz'},
+  {n:'Gal Gadot', g:'actriz'},
+  {n:'Zendaya', g:'actriz'},
+  {n:'Jessica Chastain', g:'actriz'},
+  {n:'Emily Blunt', g:'actriz'},
+  {n:'Viola Davis', g:'actriz'},
+  {n:'Reese Witherspoon', g:'actriz'},
+  {n:'Meryl Streep', g:'actriz'}
+];
+
+const DM_SECONDS = 30;
+let dmInterval = null;
+let dmTimeLeft = DM_SECONDS;
+let dmCurrentActor = null;
+
+function dmPickActor() {
+  let next;
+  do {
+    next = DM_ACTORS[Math.floor(Math.random() * DM_ACTORS.length)];
+  } while (DM_ACTORS.length > 1 && dmCurrentActor && next.n === dmCurrentActor.n);
+  dmCurrentActor = next;
+  document.getElementById('dm-actor-name').textContent = next.n;
+}
+
+function dmStartTimer() {
+  clearInterval(dmInterval);
+  dmTimeLeft = DM_SECONDS;
+  document.getElementById('dm-timeup-overlay').classList.remove('on');
+  document.getElementById('dm-timer-wrap').classList.remove('urgent');
+  document.getElementById('dm-timer').textContent = dmTimeLeft;
+  dmInterval = setInterval(() => {
+    dmTimeLeft--;
+    document.getElementById('dm-timer').textContent = Math.max(0, dmTimeLeft);
+    if (dmTimeLeft <= 10 && dmTimeLeft > 0) {
+      document.getElementById('dm-timer-wrap').classList.add('urgent');
+    }
+    if (dmTimeLeft <= 0) {
+      clearInterval(dmInterval);
+      document.getElementById('dm-timeup-overlay').classList.add('on');
+    }
+  }, 1000);
+}
+
+function startDeathMatch() {
+  dmPickActor();
+  show('s-deathmatch');
+  dmStartTimer();
+}
+
+function dmRestart() {
+  dmPickActor();
+  dmStartTimer();
+}
+
+function dmGoHome() {
+  clearInterval(dmInterval);
+  show('s-home');
+}
+	
 // ─── GOOGLE SHEETS INTEGRATION ──────────────────────────────────────────────
 // Para conectar con Google Sheets público, reemplaza SHEETS_URL con tu URL:
 // const SHEETS_URL = 'https://docs.google.com/spreadsheets/d/TU_ID/gviz/tq?tqx=out:json&sheet=Peliculas';
@@ -1120,103 +1216,7 @@ function showResult() {
   document.getElementById('r-stars').textContent = stars;
   document.getElementById('r-msg').textContent = msg;
   show('s-res');
-}
-
-// ═══════════════════════════════════════════════════════════════
-// ██████████  DEATH MATCH — modo desempate sin puntos  ██████████
-// ═══════════════════════════════════════════════════════════════
-const DM_ACTORS = [
-  {n:'Leonardo DiCaprio', g:'actor'},
-  {n:'Tom Cruise', g:'actor'},
-  {n:'Brad Pitt', g:'actor'},
-  {n:'Robert Downey Jr.', g:'actor'},
-  {n:'Dwayne Johnson', g:'actor'},
-  {n:'Johnny Depp', g:'actor'},
-  {n:'Will Smith', g:'actor'},
-  {n:'Keanu Reeves', g:'actor'},
-  {n:'Christian Bale', g:'actor'},
-  {n:'Ryan Reynolds', g:'actor'},
-  {n:'Hugh Jackman', g:'actor'},
-  {n:'Chris Hemsworth', g:'actor'},
-  {n:'Tom Hanks', g:'actor'},
-  {n:'Matt Damon', g:'actor'},
-  {n:'Joaquin Phoenix', g:'actor'},
-  {n:'Benedict Cumberbatch', g:'actor'},
-  {n:'Ryan Gosling', g:'actor'},
-  {n:'Chris Evans', g:'actor'},
-  {n:'Samuel L. Jackson', g:'actor'},
-  {n:'Timothée Chalamet', g:'actor'},
-  {n:'Scarlett Johansson', g:'actriz'},
-  {n:'Jennifer Lawrence', g:'actriz'},
-  {n:'Emma Stone', g:'actriz'},
-  {n:'Anne Hathaway', g:'actriz'},
-  {n:'Angelina Jolie', g:'actriz'},
-  {n:'Margot Robbie', g:'actriz'},
-  {n:'Natalie Portman', g:'actriz'},
-  {n:'Charlize Theron', g:'actriz'},
-  {n:'Sandra Bullock', g:'actriz'},
-  {n:'Julia Roberts', g:'actriz'},
-  {n:'Nicole Kidman', g:'actriz'},
-  {n:'Cate Blanchett', g:'actriz'},
-  {n:'Emma Watson', g:'actriz'},
-  {n:'Gal Gadot', g:'actriz'},
-  {n:'Zendaya', g:'actriz'},
-  {n:'Jessica Chastain', g:'actriz'},
-  {n:'Emily Blunt', g:'actriz'},
-  {n:'Viola Davis', g:'actriz'},
-  {n:'Reese Witherspoon', g:'actriz'},
-  {n:'Meryl Streep', g:'actriz'}
-];
-
-const DM_SECONDS = 30;
-let dmInterval = null;
-let dmTimeLeft = DM_SECONDS;
-let dmCurrentActor = null;
-
-function dmPickActor() {
-  let next;
-  do {
-    next = DM_ACTORS[Math.floor(Math.random() * DM_ACTORS.length)];
-  } while (DM_ACTORS.length > 1 && dmCurrentActor && next.n === dmCurrentActor.n);
-  dmCurrentActor = next;
-  document.getElementById('dm-actor-name').textContent = next.n;
-}
-
-function dmStartTimer() {
-  clearInterval(dmInterval);
-  dmTimeLeft = DM_SECONDS;
-  document.getElementById('dm-timeup-overlay').classList.remove('on');
-  document.getElementById('dm-timer-wrap').classList.remove('urgent');
-  document.getElementById('dm-timer').textContent = dmTimeLeft;
-  dmInterval = setInterval(() => {
-    dmTimeLeft--;
-    document.getElementById('dm-timer').textContent = Math.max(0, dmTimeLeft);
-    if (dmTimeLeft <= 10 && dmTimeLeft > 0) {
-      document.getElementById('dm-timer-wrap').classList.add('urgent');
-    }
-    if (dmTimeLeft <= 0) {
-      clearInterval(dmInterval);
-      document.getElementById('dm-timeup-overlay').classList.add('on');
-    }
-  }, 1000);
-}
-
-function startDeathMatch() {
-  dmPickActor();
-  show('s-deathmatch');
-  dmStartTimer();
-}
-
-function dmRestart() {
-  dmPickActor();
-  dmStartTimer();
-}
-
-function dmGoHome() {
-  clearInterval(dmInterval);
-  show('s-home');
-}
-	
+}	
 </script>
 </body>
 </html>
