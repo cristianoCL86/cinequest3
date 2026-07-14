@@ -18,6 +18,8 @@
   --neo-yel:  #FFE135;
   --neo-mag:  #CC00FF;
   --neo-grn:  #00FF9F;
+  --neo-red:  #FF2E2E;
+  --dim-red:  rgba(255,46,46,0.16);
   --dim-pink: rgba(255,30,142,0.18);
   --dim-cyan: rgba(0,245,255,0.14);
   --dim-yel:  rgba(255,225,53,0.14);
@@ -33,10 +35,11 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
 
 /* ── NEON TEXT ── */
 .neon-pink { color: var(--neo-pink); filter: drop-shadow(0 0 2px var(--neo-pink)) drop-shadow(0 0 8px var(--neo-pink)) drop-shadow(0 0 14px var(--neo-pink)); }
-.neon-cyan { color: var(--neo-cyan); filter: drop-shadow(0 0 1px var(--neo-cyan)) drop-shadow(0 0 4px var(--neo-cyan)) drop-shadow(0 0 8px var(--neo-cyan)); }
+.neon-cyan { color: var(--neo-cyan); filter: drop-shadow(0 0 1px var(--neo-cyan)) drop-shadow(0 0 2px var(--neo-cyan)) drop-shadow(0 0 6px var(--neo-cyan)); }
 .neon-yel  { color: var(--neo-yel);  filter: drop-shadow(0 0 2px var(--neo-yel)) drop-shadow(0 0 8px var(--neo-yel)) drop-shadow(0 0 14px var(--neo-yel)); }
 .neon-grn  { color: var(--neo-grn);  filter: drop-shadow(0 0 2px var(--neo-grn)) drop-shadow(0 0 8px var(--neo-grn)) drop-shadow(0 0 14px var(--neo-grn)); }
 .neon-mag  { color: var(--neo-mag);  filter: drop-shadow(0 0 2px var(--neo-mag)) drop-shadow(0 0 8px var(--neo-mag)) drop-shadow(0 0 14px var(--neo-mag)); }
+.neon-red  { color: var(--neo-red);  filter: drop-shadow(0 0 2px var(--neo-red)) drop-shadow(0 0 8px var(--neo-red)) drop-shadow(0 0 14px var(--neo-red)); }
 
 /* ── FILM STRIP ── */
 .film-strip {
@@ -401,6 +404,58 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
     font-size: 12px;
     white-space: nowrap;
 }
+	
+/* ── DEATH MATCH ── */
+.dm-launch-wrap { width: 100%; max-width: 540px; }
+.dm-btn {
+  width: 100%; padding: 16px; border: 2px solid var(--neo-red); background: var(--dim-red);
+  color: var(--neo-red); font-family: var(--fr); font-size: 20px; letter-spacing: 4px;
+  cursor: pointer; transition: all .2s;
+  box-shadow: 0 0 20px rgba(255,46,46,0.3), inset 0 0 10px rgba(255,46,46,0.05);
+  text-shadow: 0 0 10px var(--neo-red);
+  filter: drop-shadow(0 0 4px var(--neo-red)) drop-shadow(0 0 10px var(--neo-red));
+}
+.dm-btn:hover { background: var(--neo-red); color: var(--bg); box-shadow: 0 0 30px rgba(255,46,46,0.6); text-shadow: none; filter: none; }
+.dm-btn-sub { font-size: 10px; letter-spacing: 1px; color: var(--muted); text-align: center; margin-top: 8px; font-family: var(--fb); line-height: 1.5; }
+
+.rbtn-red { border-color: var(--neo-red); color: var(--neo-red); background: var(--dim-red); box-shadow: 0 0 12px rgba(255,46,46,0.15); text-shadow: 0 0 8px var(--neo-red); }
+.rbtn-red:hover { background: var(--neo-red); color: var(--bg); text-shadow: none; }
+
+.dm-inner {
+  padding: 36px 20px; display: flex; flex-direction: column; align-items: center; gap: 26px;
+  text-align: center; min-height: 58vh; justify-content: center; position: relative;
+}
+.dm-actor-lbl { font-family: var(--fr); font-size: 11px; letter-spacing: 3px; color: var(--muted); max-width: 480px; line-height: 1.6; }
+.dm-actor-name { font-family: var(--fr); font-size: clamp(22px, 6vw, 34px); letter-spacing: 2px; line-height: 1.25; max-width: 600px; word-break: break-word; }
+.dm-timer-wrap {
+  border: 3px solid var(--neo-red); border-radius: 50%;
+  width: clamp(140px, 45vw, 200px); height: clamp(140px, 45vw, 200px);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 30px rgba(255,46,46,0.35), inset 0 0 25px rgba(255,46,46,0.08);
+  flex-shrink: 0;
+}
+.dm-timer-wrap.urgent { animation: dm-urgent-pulse .6s ease-in-out infinite; }
+@keyframes dm-urgent-pulse {
+  0%,100% { box-shadow: 0 0 30px rgba(255,46,46,0.35), inset 0 0 25px rgba(255,46,46,0.08); }
+  50%     { box-shadow: 0 0 55px rgba(255,46,46,0.75), inset 0 0 35px rgba(255,46,46,0.18); }
+}
+.dm-timer { font-family: var(--fr); font-size: clamp(48px, 18vw, 80px); line-height: 1; color: var(--neo-red); }
+.dm-btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+
+.dm-timeup-overlay {
+  position: absolute; inset: 0; display: none; align-items: center; justify-content: center;
+  flex-direction: column; gap: 22px; background: rgba(10,8,15,0.94); z-index: 5; padding: 20px;
+}
+.dm-timeup-overlay.on { display: flex; }
+.dm-timeup-text {
+  font-family: var(--fr); font-size: clamp(40px, 14vw, 68px); letter-spacing: clamp(4px, 3vw, 10px);
+  color: var(--neo-red);
+  text-shadow: 0 0 10px var(--neo-red), 0 0 25px var(--neo-red), 0 0 50px var(--neo-red);
+  filter: drop-shadow(0 0 6px var(--neo-red)) drop-shadow(0 0 14px var(--neo-red)) drop-shadow(0 0 24px var(--neo-red));
+  animation: dm-flash .55s ease-in-out infinite alternate;
+}
+@keyframes dm-flash { 0% { opacity: 1; transform: scale(1); } 100% { opacity: .5; transform: scale(1.06); } }
+	
 </style>
 </head>
 <body>
@@ -451,15 +506,15 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
       <div class="mode-grid">
         <div class="mc sel" data-mode="emoji">
           <div class="mc-ico">😀</div>
-          <div><div class="mc-name">Emoji Movie</div><div class="mc-desc">3–5 emojis representan una película</div></div>
+          <div><div class="mc-name">Emoji Movie</div><div class="mc-desc">Emojis que representan una película</div></div>
         </div>
         <div class="mc" data-mode="scramble">
           <div class="mc-ico">🔤</div>
-          <div><div class="mc-name">Título Revuelto</div><div class="mc-desc">Letras mezcladas por cada palabra</div></div>
+          <div><div class="mc-name">Título Revuelto</div><div class="mc-desc">Letras mezcladas por cada palabra del titulo</div></div>
         </div>
         <div class="mc" data-mode="actors">
           <div class="mc-ico">🎥</div>
-          <div><div class="mc-name">Adivina la Pelicula</div><div class="mc-desc">Con fotos reales, de menor a mayor fama</div></div>
+          <div><div class="mc-name">Adivina la Pelicula</div><div class="mc-desc">Con fotos  de actores, de menor a mayor protagonismoa</div></div>
         </div>
         <div class="funcionalidad-apagada" data-mode="scene">
           <div class="funcionalidad-apagada-ico">🎞️</div>
@@ -471,7 +526,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
         </div>
         <div class="funcionalidad-apagada" data-mode="eyefilm">
           <div class="funcionalidad-apagada-ico">🔍</div>
-          <div><div class="funcionalidad-apagada-name">Ojos y Película</div><div class="funcionalidad-apagada-desc">3 actores con fotos — ¿de qué film?</div></div>
+          <div><div class="funcionalidad-apagada-name">Ojos y Película</div><div class="funcionalidad-apagada-desc">3 miradas de actores con fotos — ¿Quienes son y en film actuan juntos?</div></div>
         </div>
       </div>
 
@@ -482,6 +537,12 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
         <button class="funcionalidad-apagada-db" data-diff="dificil">✦✦✦ Difícil</button>
       </div>
       <button class="play-btn" id="play-btn">▶ COMENZAR</button>
+
+	  <div class="sec-ttl" style="color:var(--neo-red);text-shadow:0 0 8px var(--neo-red);border-bottom:1px solid rgba(255,46,46,0.2);">— Desempate —</div>
+      <div class="dm-launch-wrap">
+        <button class="dm-btn" onclick="startDeathMatch()">💀 DEATH MATCH</button>
+        <div class="dm-btn-sub">30 segundos · 1 pelicula 1 punto · Nombra la mayor cantidad de películas del actor o actriz al azar</div>
+      </div>
     </div>
   </div>
 
@@ -536,6 +597,29 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
     </div>
   </div>
 
+  <!-- ── DEATH MATCH ── -->
+  <div id="s-deathmatch" class="screen">
+    <div class="dm-inner">
+      <div class="dm-actor-lbl">💀 DEATH MATCH — DI EN VOZ ALTA TODAS LAS PELÍCULAS QUE PUEDAS DE:</div>
+      <div class="dm-actor-name neon-red" id="dm-actor-name">—</div>
+      <div class="dm-timer-wrap" id="dm-timer-wrap">
+        <div class="dm-timer neon-red" id="dm-timer">30</div>
+      </div>
+      <div class="dm-btns">
+        <button class="rbtn" onclick="dmGoHome()">‹ Menú principal</button>
+        <button class="rbtn rbtn-red" onclick="dmRestart()">🔄 Otro actor</button>
+      </div>
+
+      <div class="dm-timeup-overlay" id="dm-timeup-overlay">
+        <div class="dm-timeup-text neon-red">TIEMPO</div>
+        <div class="dm-btns">
+          <button class="rbtn" onclick="dmGoHome()">‹ Menú principal</button>
+          <button class="rbtn rbtn-red" onclick="dmRestart()">🔄 Otro actor</button>
+        </div>
+      </div>
+    </div>
+  </div>
+	
   <!-- Film strip bottom -->
   <div class="film-strip" style="border-top:3px solid var(--neo-mag);box-shadow:0 0 12px var(--neo-mag);">
     <div class="film-holes" id="holes-bot"></div>
@@ -1038,6 +1122,102 @@ function showResult() {
   document.getElementById('r-msg').textContent = msg;
   show('s-res');
 }
+
+// ═══════════════════════════════════════════════════════════════
+// ██████████  DEATH MATCH — modo desempate sin puntos  ██████████
+// ═══════════════════════════════════════════════════════════════
+const DM_ACTORS = [
+  {n:'Leonardo DiCaprio', g:'actor'},
+  {n:'Tom Cruise', g:'actor'},
+  {n:'Brad Pitt', g:'actor'},
+  {n:'Robert Downey Jr.', g:'actor'},
+  {n:'Dwayne Johnson', g:'actor'},
+  {n:'Johnny Depp', g:'actor'},
+  {n:'Will Smith', g:'actor'},
+  {n:'Keanu Reeves', g:'actor'},
+  {n:'Christian Bale', g:'actor'},
+  {n:'Ryan Reynolds', g:'actor'},
+  {n:'Hugh Jackman', g:'actor'},
+  {n:'Chris Hemsworth', g:'actor'},
+  {n:'Tom Hanks', g:'actor'},
+  {n:'Matt Damon', g:'actor'},
+  {n:'Joaquin Phoenix', g:'actor'},
+  {n:'Benedict Cumberbatch', g:'actor'},
+  {n:'Ryan Gosling', g:'actor'},
+  {n:'Chris Evans', g:'actor'},
+  {n:'Samuel L. Jackson', g:'actor'},
+  {n:'Timothée Chalamet', g:'actor'},
+  {n:'Scarlett Johansson', g:'actriz'},
+  {n:'Jennifer Lawrence', g:'actriz'},
+  {n:'Emma Stone', g:'actriz'},
+  {n:'Anne Hathaway', g:'actriz'},
+  {n:'Angelina Jolie', g:'actriz'},
+  {n:'Margot Robbie', g:'actriz'},
+  {n:'Natalie Portman', g:'actriz'},
+  {n:'Charlize Theron', g:'actriz'},
+  {n:'Sandra Bullock', g:'actriz'},
+  {n:'Julia Roberts', g:'actriz'},
+  {n:'Nicole Kidman', g:'actriz'},
+  {n:'Cate Blanchett', g:'actriz'},
+  {n:'Emma Watson', g:'actriz'},
+  {n:'Gal Gadot', g:'actriz'},
+  {n:'Zendaya', g:'actriz'},
+  {n:'Jessica Chastain', g:'actriz'},
+  {n:'Emily Blunt', g:'actriz'},
+  {n:'Viola Davis', g:'actriz'},
+  {n:'Reese Witherspoon', g:'actriz'},
+  {n:'Meryl Streep', g:'actriz'}
+];
+
+const DM_SECONDS = 30;
+let dmInterval = null;
+let dmTimeLeft = DM_SECONDS;
+let dmCurrentActor = null;
+
+function dmPickActor() {
+  let next;
+  do {
+    next = DM_ACTORS[Math.floor(Math.random() * DM_ACTORS.length)];
+  } while (DM_ACTORS.length > 1 && dmCurrentActor && next.n === dmCurrentActor.n);
+  dmCurrentActor = next;
+  document.getElementById('dm-actor-name').textContent = next.n;
+}
+
+function dmStartTimer() {
+  clearInterval(dmInterval);
+  dmTimeLeft = DM_SECONDS;
+  document.getElementById('dm-timeup-overlay').classList.remove('on');
+  document.getElementById('dm-timer-wrap').classList.remove('urgent');
+  document.getElementById('dm-timer').textContent = dmTimeLeft;
+  dmInterval = setInterval(() => {
+    dmTimeLeft--;
+    document.getElementById('dm-timer').textContent = Math.max(0, dmTimeLeft);
+    if (dmTimeLeft <= 10 && dmTimeLeft > 0) {
+      document.getElementById('dm-timer-wrap').classList.add('urgent');
+    }
+    if (dmTimeLeft <= 0) {
+      clearInterval(dmInterval);
+      document.getElementById('dm-timeup-overlay').classList.add('on');
+    }
+  }, 1000);
+}
+
+function startDeathMatch() {
+  dmPickActor();
+  show('s-deathmatch');
+  dmStartTimer();
+}
+
+function dmRestart() {
+  dmPickActor();
+  dmStartTimer();
+}
+
+function dmGoHome() {
+  clearInterval(dmInterval);
+  show('s-home');
+}
+	
 </script>
 </body>
 </html>
