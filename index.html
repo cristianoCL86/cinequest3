@@ -449,15 +449,14 @@ body { background: var(--bg); color: var(--text); font-family: var(--fb); min-he
 .dm-timeup-text {
   font-family: var(--fr); font-size: clamp(40px, 14vw, 68px); letter-spacing: clamp(4px, 3vw, 10px);
   color: var(--neo-red);
-  text-shadow: 0 0 10px var(--neo-red), 0 0 25px var(--neo-red), 0 0 50px var(--neo-red);
-  filter: drop-shadow(0 0 6px var(--neo-red)) drop-shadow(0 0 14px var(--neo-red)) drop-shadow(0 0 24px var(--neo-red));
+  filter: drop-shadow(0 0 1px var(--neo-red)) drop-shadow(0 0 2px var(--neo-red)) drop-shadow(0 0 4px var(--neo-red));
   animation: dm-flash .55s ease-in-out infinite alternate;
 }
 @keyframes dm-flash { 0% { opacity: 1; transform: scale(1); } 100% { opacity: .5; transform: scale(1.06); } }
 	
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
 
 <div id="app">
   <!-- Film strip top -->
